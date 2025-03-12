@@ -50,10 +50,12 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author edit(Long id, AuthorDto author) {
-        Author oldAuthor = this.findById(id);
+        Author oldAuthor = this.authorRepository.findById(id).orElseThrow(InvalidAuthorIdException::new);
+
         oldAuthor.setName(author.getName());
         oldAuthor.setSurname(author.getSurname());
         oldAuthor.setCountry(this.countryService.findById(author.getCountry()));
+
         return this.authorRepository.save(oldAuthor);
     }
 

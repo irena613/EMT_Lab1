@@ -43,9 +43,11 @@ public class CountyServiceImpl implements CountryService {
 
     @Override
     public Country edit(Long id, CountryDto country) {
-        Country oldCountry = this.findById(id);
+        Country oldCountry = this.countryRepository.findById(id).orElseThrow(InvalidCountryIdException::new);
+
         oldCountry.setName(country.getName());
         oldCountry.setContinent(country.getContinent());
+
         return countryRepository.save(oldCountry);
     }
 

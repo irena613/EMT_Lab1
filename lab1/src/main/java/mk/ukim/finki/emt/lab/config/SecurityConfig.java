@@ -108,6 +108,7 @@ public class SecurityConfig {
                     .roles("LIBRARIAN")
                     .build();
 
+            
         return new InMemoryUserDetailsManager(user1, admin, librarian);
     }}
 

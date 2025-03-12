@@ -26,6 +26,5 @@ public interface BookService {
 
     Optional<Book> isRented(Long id);
 
-//    Page<Book> findPage(String guestName,  Category category, Long hotel, int pageNum, int pageSize);
 
 }
